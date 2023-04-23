@@ -38,10 +38,18 @@ function showTemp(response) {
   iconElement.setAttribute("alt", `${response.data.weather[0].description}`);
 }
 
-let apiKey = `5f9cb46918707b7c52fda2b8ab236917`;
-let city = `Lisbon`;
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+function search(city) {
+  let apiKey = `5f9cb46918707b7c52fda2b8ab236917`;
 
-console.log(apiUrl);
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showTemp);
+}
 
-axios.get(apiUrl).then(showTemp);
+function searchForm(event) {
+  event.preventDefault();
+  let cityInElement = document.querySelector("#city-in");
+  search(cityInElement.value);
+}
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", searchForm);
