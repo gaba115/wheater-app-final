@@ -15,23 +15,32 @@ function formatDate(timestamp) {
 
 function showTemp(response) {
   console.log(response.data);
+  let cityElement = document.querySelector("#city");
   let tempElement = document.querySelector("#temperature");
   let preciElement = document.querySelector("#preci");
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind");
   let descriptionElement = document.querySelector("#description");
   let dateElement = document.querySelector("#date");
+  let iconElement = document.querySelector("#icon");
 
+  cityElement.innerHTML = response.data.name;
   tempElement.innerHTML = Math.round(response.data.main.temp);
   preciElement.innerHTML = Math.round(response.data.main.temp);
   humidityElement.innerHTML = Math.round(response.data.main.humidity);
   windElement.innerHTML = Math.round(response.data.wind.speed);
   descriptionElement.innerHTML = response.data.weather[0].description;
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
+  iconElement.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", `${response.data.weather[0].description}`);
 }
 
 let apiKey = `5f9cb46918707b7c52fda2b8ab236917`;
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=London&appid=${apiKey}&units=metric`;
+let city = `Lisbon`;
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
 console.log(apiUrl);
 
