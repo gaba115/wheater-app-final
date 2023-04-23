@@ -24,6 +24,8 @@ function showTemp(response) {
   let dateElement = document.querySelector("#date");
   let iconElement = document.querySelector("#icon");
 
+  celsiusTemp = response.data.main.temp;
+
   cityElement.innerHTML = response.data.name;
   tempElement.innerHTML = Math.round(response.data.main.temp);
   preciElement.innerHTML = Math.round(response.data.main.temp);
@@ -51,5 +53,28 @@ function searchForm(event) {
   search(cityInElement.value);
 }
 
+function showFahrenheit(event) {
+  event.preventDefault();
+  let tempElement = document.querySelector("#temperature");
+  let fahrenTemp = (celsiusTemp * 9) / 5 + 32;
+  tempElement.innerHTML = Math.round(fahrenTemp);
+}
+
+function showCelsius(event) {
+  event.preventDefault();
+  let tempElement = document.querySelector("#temperature");
+  tempElement.innerHTML = Math.round(celsiusTemp);
+}
+
+let celsiusTemp = null;
+
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", searchForm);
+
+let fahrenheitLink = document.querySelector("#fahrenheit");
+fahrenheitLink.addEventListener("click", showFahrenheit);
+
+let celsiusLink = document.querySelector("#celsius");
+celsiusLink.addEventListener("click", showCelsius);
+
+search("New York");
