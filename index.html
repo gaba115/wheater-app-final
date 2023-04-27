@@ -33,30 +33,35 @@
             </div>
           </div>
         </form>
-        <div class="row">
-          <div class="col-md-4" id="1">
-            <img id="icon" alt="Picture" />
-            <strong id="temperature"></strong>
-            <span class="units"
-              ><a href="#" id="celsius">°C</a> /
-              <a href="#" id="fahrenheit">°F</a></span
-            >
-          </div>
-          <div class="col-md-4">
-            <ul>
-              <li>Precipitatiion: <span id="preci"></span>%</li>
-              <li>Humidity: <span id="humidity"></span>%</li>
-              <li>Wind: <span id="wind"></span> km/h</li>
-            </ul>
-          </div>
-          <div class="col-md-4">
-            <h1 id="city"></h1>
-            <ul>
-              <li id="date"></li>
-              <li id="description">Sunny</li>
-            </ul>
+
+        <div class="weather-today">
+          <div class="row">
+            <div class="col-md-4" id="1">
+              <img id="icon" alt="Picture" />
+              <strong id="temperature"></strong>
+              <span class="units"
+                ><a href="#" id="celsius">°C</a> /
+                <a href="#" id="fahrenheit">°F</a></span
+              >
+            </div>
+            <div class="col-md-4">
+              <ul>
+                <li>Precipitatiion: <span id="preci"></span>%</li>
+                <li>Humidity: <span id="humidity"></span>%</li>
+                <li>Wind: <span id="wind"></span> km/h</li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <h1 class="city" id="city"></h1>
+              <ul>
+                <li id="date"></li>
+                <li id="description">Sunny</li>
+              </ul>
+            </div>
           </div>
         </div>
+
+        <div class="weather-forecast" id="forecast"></div>
       </div>
     </div>
     <script src="src/app.js"></script>
